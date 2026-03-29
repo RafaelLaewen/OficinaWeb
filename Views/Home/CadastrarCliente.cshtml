@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Cadastrar Cliente - Oficina";
+}
+
+<div class="container py-4">
+    <div class="mb-4">
+        <a href="/" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left"></i> Voltar ao Início
+        </a>
+    </div>
+
+    <div class="card shadow border-0">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="bi bi-person-plus"></i> Novo Cadastro</h4>
+        </div>
+        
+        <div class="card-body p-4">
+            <form action="/Home/SalvarCliente" method="post">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <h5 class="text-secondary border-bottom pb-2">Dados do Proprietário</h5>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Nome Completo:</label>
+                        <input type="text" name="nome" class="form-control" required placeholder="Ex: João Silva">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">CPF (só números):</label>
+                        <input type="text" name="cpf" class="form-control" required placeholder="00000000000">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Telefone/WhatsApp:</label>
+                        <input type="text" name="telefone" class="form-control" placeholder="(42) 99999-9999">
+                    </div>
+
+                    <div class="col-md-12 mb-3 mt-3">
+                        <h5 class="text-secondary border-bottom pb-2">Dados do Veículo</h5>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label fw-bold">Placa:</label>
+                        <input type="text" name="placa" class="form-control" required maxlength="7" placeholder="ABC1234">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label fw-bold">Marca:</label>
+                        <input type="text" name="marca" class="form-control" placeholder="Ex: Ford">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label fw-bold">Modelo:</label>
+                        <input type="text" name="modelo" class="form-control" placeholder="Ex: Fiesta 1.0">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label fw-bold">Ano:</label>
+                        <input type="number" name="ano" class="form-control" placeholder="2013">
+                    </div>
+                </div>
+
+                <div class="text-end mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-5 shadow">Confirmar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

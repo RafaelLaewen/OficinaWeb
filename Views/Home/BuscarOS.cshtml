@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Central de O.S.";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-search"></i> Central de Ordens de Serviço</h2>
+        <a href="/" class="btn btn-outline-secondary btn-sm">Voltar ao Início</a>
+    </div>
+
+    <div class="card shadow-sm mb-4 border-0" style="background-color: #f8f9fa;">
+        <div class="card-body">
+            <form asp-action="BuscarOS" method="get" class="row g-2">
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" name="termo" class="form-control form-control-lg border-start-0" 
+                               placeholder="Busque por Placa, Nome, CPF ou Modelo do veículo..." 
+                               value="@ViewBag.TermoBusca">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Pesquisar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (ViewBag.ListaOS != null)
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle border bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nº OS</th>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Veículo</th> <th>Problema</th>
+                        <th class="text-end">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var os in ViewBag.ListaOS)
+                    {
+                        <tr>
+                            <td><span class="badge bg-secondary">#@os.Id</span></td>
+                            <td style="font-size: 0.9em;">@os.Data</td>
+                            <td><strong>@os.Cliente</strong></td>
+                            <td><small class="text-muted">@os.Veiculo</small></td>
+                            <td><small>@os.Problema</small></td>
+                            <td class="text-end fw-bold text-success">R$ @os.Total.ToString("N2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (((List<object>)ViewBag.ListaOS).Count == 0)
+        {
+            <div class="alert alert-info mt-3 text-center border-0 shadow-sm">
+                <i class="bi bi-info-circle me-2"></i> Nenhum registro encontrado para "@ViewBag.TermoBusca".
+            </div>
+        }
+    }
+</div>
